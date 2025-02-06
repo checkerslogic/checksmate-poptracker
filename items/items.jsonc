@@ -1,6 +1,6 @@
 [
   //more info: https://github.com/black-sliver/PopTracker/blob/master/doc/PACKS.md#items
-  {
+  /* {
     "name": "Toggle",
     "type": "toggle",
     "img": "images/items/toggle.png",
@@ -52,5 +52,5 @@
         "inherit_codes": false
       }
     ]
-  }
+  } */
 ]
