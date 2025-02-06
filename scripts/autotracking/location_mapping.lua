@@ -19,8 +19,8 @@ LOCATION_MAPPING = {
 	[BASE_LOCATION_ID + 10] = { { "@tha_chesszone/Capture Piece Queen's Knight/" } },
 	[BASE_LOCATION_ID + 12] = { { "@tha_chesszone/Capture Piece Queen's Bishop/" } },
 	[BASE_LOCATION_ID + 14] = { { "@tha_chesszone/Capture Piece Queen/" } },
-	[BASE_LOCATION_ID + 98] = { { "@tha_chesszone/Checkmate/Checkmate Minima/" } },
-	[BASE_LOCATION_ID + 99] = { { "@tha_chesszone/Checkmate/Checkmate Maxima/" } },
+	[BASE_LOCATION_ID + 98] = { { "@tha_chesszone/Checkmate/Checkmate Minima" } },
+	[BASE_LOCATION_ID + 99] = { { "@tha_chesszone/Checkmate/Checkmate Maxima" } },
 	[BASE_LOCATION_ID + 13] = { { "@tha_chesszone/Capture Piece King's Bishop/" } },
 	[BASE_LOCATION_ID + 11] = { { "@tha_chesszone/Capture Piece King's Knight/" } },
 	[BASE_LOCATION_ID + 9] = { { "@tha_chesszone/Capture Piece King's Rook/" } },
@@ -91,4 +91,4 @@ LOCATION_MAPPING = {
 	[BASE_LOCATION_ID + 57] = { { "@tha_chesszone/Fork, True Royal/" } },
 	[BASE_LOCATION_ID + 58] = { { "@tha_chesszone/O-O Castle/" } },
 	[BASE_LOCATION_ID + 59] = { { "@tha_chesszone/O-O-O Castle/" } }
-}e
+}
