@@ -1,56 +1,164 @@
 [
   //more info: https://github.com/black-sliver/PopTracker/blob/master/doc/PACKS.md#items
-  /* {
-    "name": "Toggle",
+  {
+    "name": "Play as White",
     "type": "toggle",
-    "img": "images/items/toggle.png",
+    "img": "images/items/blackqueenwhite.png",
     "codes": "toggle"
   },
   {
-    "name": "Progressive",
+    "name": "Victory",
+    "type": "toggle",
+    "img": "images/items/blackqueenwhite.png",
+    "codes": "toggle"
+  },
+  {
+    "name": "Super-Size Me",
+    "type": "toggle",
+    "img": "images/items/blackqueenwhite.png",
+    "codes": "toggle"
+  },
+  {
+    "name": "Progressive Engine ELO Lobotomy",
     "type": "progressive",
     "allow_disabled": true,
     "initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/progressive.png",
+        "img": "images/items/blackhorseblack.png",
         "codes": "progressive",
-        "inherit_codes": false
-      },
-      {
-        "img": "images/items/progressive_2.png",
-        "codes": "progressive_2",
         "inherit_codes": false
       }
     ]
   },
   {
-    "name": "Consumable",
-    "type": "consumable",
-    "img": "images/items/consumable.png",
-    "max_quantity": 8,
-    "increment": 1,
-    "decrement": 1,
-    "initial_quantity": 1,
-    "overlay_background": "#000000",
-    "overlay_font_size": 8,
-    "codes": "consumable"
-  },
-  {
-    "name": "Progressive Toggle",
-    "type": "progressive_toggle",
+    "name": "Progressive Pawn",
+    "type": "progressive",
+    "allow_disabled": true,
     "initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/progressive.png",
-        "codes": "progressive_toggle",
-        "inherit_codes": false
-      },
-      {
-        "img": "images/items/progressive_2.png",
-        "codes": "progressive_toggle_2",
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
         "inherit_codes": false
       }
     ]
-  } */
+  },
+  {
+    "name": "Progressive Pawn Forwardness",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive Minor Piece",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive Major Piece",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive Major To Queen",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive Pocket",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive Pocket Gems",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive Pocket Range",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive King Promotion",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  },
+  {
+    "name": "Progressive Consul",
+    "type": "progressive",
+    "allow_disabled": true,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/items/blackhorseblack.png",
+        "codes": "progressive",
+        "inherit_codes": false
+      }
+    ]
+  }
 ]
