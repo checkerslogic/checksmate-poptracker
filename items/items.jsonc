@@ -4,19 +4,19 @@
     "name": "Play as White",
     "type": "toggle",
     "img": "images/items/blackqueenwhite.png",
-    "codes": "toggle"
+    "codes": "white"
   },
   {
     "name": "Victory",
     "type": "toggle",
     "img": "images/items/blackqueenwhite.png",
-    "codes": "toggle"
+    "codes": "vict"
   },
   {
     "name": "Super-Size Me",
     "type": "toggle",
     "img": "images/items/blackqueenwhite.png",
-    "codes": "toggle"
+    "codes": "super"
   },
   {
     "name": "Progressive Engine ELO Lobotomy",
@@ -26,7 +26,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "elo",
         "inherit_codes": false
       }
     ]
@@ -39,7 +39,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "pawncount",
         "inherit_codes": false
       }
     ]
@@ -52,7 +52,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "pawnforward",
         "inherit_codes": false
       }
     ]
@@ -65,7 +65,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "progminor",
         "inherit_codes": false
       }
     ]
@@ -78,7 +78,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "progmajor",
         "inherit_codes": false
       }
     ]
@@ -91,7 +91,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "progqueen",
         "inherit_codes": false
       }
     ]
@@ -104,7 +104,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "progpocket",
         "inherit_codes": false
       }
     ]
@@ -117,7 +117,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "proggems",
         "inherit_codes": false
       }
     ]
@@ -130,7 +130,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "progpocketrange",
         "inherit_codes": false
       }
     ]
@@ -143,7 +143,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "progking",
         "inherit_codes": false
       }
     ]
@@ -156,7 +156,7 @@
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "progressive",
+        "codes": "progconsul",
         "inherit_codes": false
       }
     ]

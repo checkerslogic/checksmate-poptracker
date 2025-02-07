@@ -3,11 +3,18 @@
 -- here are the SM items as an example: https://github.com/Cyb3RGER/sm_ap_tracker/blob/main/scripts/autotracking/item_mapping.lua
 BASE_ITEM_ID = 4901000
 ITEM_MAPPING = {
-	[BASE_ITEM_ID + 00000] = { { "toggle" } },
-	[BASE_ITEM_ID + 00001] = { { "progressive" } },
-	[BASE_ITEM_ID + 00002] = { { "consumable" } },
-	-- handle progressive_toggle as toggle, only changing it's active state
-	[BASE_ITEM_ID + 00003] = { { "progressive_toggle", "toggle" } },
-	-- multiple items on this id, add the consumable 3 times
-	[BASE_ITEM_ID + 00004] = { { "toggle" }, { "consumable", nil, 3 } }
+	[BASE_ITEM_ID + 000] = { { "white", "toggle" } },
+	[BASE_ITEM_ID + 001] = { { "elo", "progressive" } },
+	[BASE_ITEM_ID + 002] = { { "pawncount", "progressive" } },
+	[BASE_ITEM_ID + 003] = { { "pawnforward", "progressive" } },
+	[BASE_ITEM_ID + 004] = { { "progminor", "progressive" } },
+	[BASE_ITEM_ID + 005] = { { "progmajor", "progressive" } },
+	[BASE_ITEM_ID + 006] = { { "progqueen", "progressive" } },
+	[BASE_ITEM_ID + 009] = { { "vict" } },
+	[BASE_ITEM_ID + 010] = { { "super" } },
+	[BASE_ITEM_ID + 020] = { { "progpocket", "progressive" } },
+	[BASE_ITEM_ID + 023] = { { "proggems", "progressive" } },
+	[BASE_ITEM_ID + 024] = { { "progpocketrange", "progressive" } },
+	[BASE_ITEM_ID + 025] = { { "progking", "progressive" } },
+	[BASE_ITEM_ID + 026] = { { "progconsul", "progressive" } },
 }
