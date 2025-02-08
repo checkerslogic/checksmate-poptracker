@@ -163,7 +163,7 @@
         {"name": "Capture 6 Pieces",
         "access_rules": ["$needs_material|3300|4500,$needs_chessmen|5"],
         "item_count": 1},
-        {"name": "Capture 7 Pawns",
+        {"name": "Capture 7 Pieces",
         "access_rules": ["$needs_material|3750|4900,$needs_chessmen|6"],
         "item_count": 1}],
       "map_locations": [{"map": "map1", "x": 307, "y": 554}]},
@@ -320,26 +320,44 @@
       "map_locations": [{"map": "map1", "x": 420, "y": 673}]},
     {"name": "Fork, Sacrificial",
       "access_rules": ["$needs_material|700|1100,$needs_chessmen|6,$needs_pin"],
+      "visibility_rules": [
+        // fork visibility rule
+      ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 796, "y": 389}]},
     {"name": "Fork, Sacrificial Triple",
       "access_rules": ["$needs_material|3300|2700,$needs_chessmen|9,$needs_pin"],
+      "visibility_rules": [
+        // fork visibility rule
+      ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 795, "y": 513}]},
     {"name": "Fork, Sacrificial Royal",
       "access_rules": ["$needs_material|3600|5200,$needs_chessmen|12,$needs_pin"],
+      "visibility_rules": [
+        // fork visibility rule
+      ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 826, "y": 133}]},
     {"name": "Fork, True",
       "access_rules": ["$needs_material|3150|4550,$needs_chessmen|10,$needs_pin"],
+      "visibility_rules": [
+        // fork visibility rule
+      ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 913, "y": 389}]},
     {"name": "Fork, True Triple",
       "access_rules": ["$needs_material|3850|5850,$needs_chessmen|12,$needs_pin"],
+      "visibility_rules": [
+        // fork visibility rule
+      ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 912, "y": 513}]},
     {"name": "Fork, True Royal",
       "access_rules": ["$needs_material|4020|6020,$needs_chessmen|14,$needs_pin"],
+      "visibility_rules": [
+        // fork visibility rule
+      ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 826, "y": 262}]},
     {"name": "O-O Castle",
