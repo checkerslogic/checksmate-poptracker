@@ -11,6 +11,13 @@ CUR_INDEX = -1
 LOCAL_ITEMS = {}
 GLOBAL_ITEMS = {}
 
+GAME_MODE = "ordered_progressive" -- default to ordered progressive mode
+DIFFICULTY_SETTING = "daily" -- default to normal
+FAIRY_CHESS_ARMY = false
+FAIRY_CHESS_PAWNS = "vanilla"
+FAIRY_CHESS_PAWNS_MIXED = false
+FAIRY_CHESS_PIECES = 1 -- default to FIDE pieces (1 piece type)
+
 -- resets an item to its initial state
 function resetItem(item_code, item_type)
 	local obj = Tracker:FindObjectForCode(item_code)
@@ -78,7 +85,72 @@ end
 
 -- apply everything needed from slot_data, called from onClear
 function apply_slot_data(slot_data)
-	-- put any code here that slot_data should affect (toggling setting items for example)
+	if slot_data then
+		-- Game mode setting
+		if slot_data["goal"] then
+			if slot_data["goal"] == 2 then
+				GAME_MODE = "super"
+			elseif slot_data["goal"] == 1 then
+				GAME_MODE = "both"
+			else
+				GAME_MODE = "single"
+			end
+		end
+		
+		-- Difficulty setting
+		if slot_data["difficulty"] then
+			if slot_data["difficulty"] == 0 then
+				DIFFICULTY_SETTING = "normal"
+			elseif slot_data["difficulty"] == 1 then
+				DIFFICULTY_SETTING = "daily"
+			elseif slot_data["difficulty"] == 2 then
+				DIFFICULTY_SETTING = "bullet"
+			elseif slot_data["difficulty"] == 3 then
+				DIFFICULTY_SETTING = "relaxed"
+			end
+		end
+		
+		-- Fairy chess settings
+		if slot_data["fairy_chess_army"] ~= nil then
+			FAIRY_CHESS_ARMY = slot_data["fairy_chess_army"] == 1
+		end
+		
+		if slot_data["fairy_chess_pawns"] ~= nil then
+			if slot_data["fairy_chess_pawns"] == 0 then
+				FAIRY_CHESS_PAWNS = "vanilla"
+				FAIRY_CHESS_PAWNS_MIXED = false
+			elseif slot_data["fairy_chess_pawns"] == 1 then
+				FAIRY_CHESS_PAWNS = "fairy"
+				FAIRY_CHESS_PAWNS_MIXED = false
+			elseif slot_data["fairy_chess_pawns"] == 2 then
+				FAIRY_CHESS_PAWNS = "mixed"
+				FAIRY_CHESS_PAWNS_MIXED = true
+			end
+		end
+		
+		if slot_data["fairy_chess_pieces"] ~= nil then
+			if slot_data["fairy_chess_pieces"] == 0 then
+				-- Check configure array if available
+				if slot_data["fairy_chess_pieces_configure"] then
+					FAIRY_CHESS_PIECES = #slot_data["fairy_chess_pieces_configure"]
+				else
+					FAIRY_CHESS_PIECES = 1 -- Default to FIDE
+				end
+			elseif slot_data["fairy_chess_pieces"] == 1 then
+				FAIRY_CHESS_PIECES = 1 -- FIDE
+			elseif slot_data["fairy_chess_pieces"] == 2 then
+				FAIRY_CHESS_PIECES = 4 -- Betza
+			elseif slot_data["fairy_chess_pieces"] == 3 then
+				FAIRY_CHESS_PIECES = 6 -- Full
+			end
+		end
+		
+		if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+			print(string.format("Game settings - Mode: %s, Difficulty: %s", GAME_MODE, DIFFICULTY_SETTING))
+			print(string.format("Fairy chess - Army: %s, Pawns: %s (Mixed: %s), Pieces: %d", 
+				FAIRY_CHESS_ARMY, FAIRY_CHESS_PAWNS, FAIRY_CHESS_PAWNS_MIXED, FAIRY_CHESS_PIECES))
+		end
+	end
 end
 
 -- called right after an AP slot is connected
@@ -164,6 +236,7 @@ function onItem(index, item_id, item_name, player_number)
 		end
 		return
 	end
+	
 	for _, item_table in pairs(mapping_entry) do
 		if item_table then
 			local item_code = item_table[1]
@@ -185,20 +258,31 @@ function onItem(index, item_id, item_name, player_number)
 						GLOBAL_ITEMS[item_code] = 1
 					end
 				end
-			elseif AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-				print(string.format("onClear: skipping item_table with no item_code"))
 			end
-		elseif AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-			print(string.format("onClear: skipping empty item_table"))
 		end
 	end
+	
+	-- Force location accessibility recalculation
+	if ENABLE_DEBUG_LOG then
+		print("Forcing location accessibility recalculation after item update")
+	end
+	
+	-- Trigger accessibility check for all locations
+	for _, mapping_entry in pairs(LOCATION_MAPPING) do
+		for _, location_table in ipairs(mapping_entry) do
+			if location_table and location_table[1] then
+				local obj = Tracker:FindObjectForCode(location_table[1])
+				if obj then
+					-- Access the AccessibilityLevel to force a recalculation
+					local _ = obj.AccessibilityLevel
+				end
+			end
+		end
+	end
+	
 	if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
 		print(string.format("local items: %s", dump_table(LOCAL_ITEMS)))
 		print(string.format("global items: %s", dump_table(GLOBAL_ITEMS)))
-	end
-	-- track local items via snes interface
-	if PopVersion < "0.20.1" or AutoTracker:GetConnectionState("SNES") == 3 then
-		-- add snes interface functions for local item tracking here
 	end
 end
 
