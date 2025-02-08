@@ -88,12 +88,12 @@ function apply_slot_data(slot_data)
 	if slot_data then
 		-- Game mode setting
 		if slot_data["goal"] then
-			if slot_data["goal"] == 2 then
-				GAME_MODE = "super"
-			elseif slot_data["goal"] == 1 then
-				GAME_MODE = "both"
-			else
+			if slot_data["goal"] == 0 then
 				GAME_MODE = "single"
+			elseif slot_data["goal"] == 3 then
+				GAME_MODE = "super"
+			else
+				GAME_MODE = "both"	
 			end
 		end
 		
