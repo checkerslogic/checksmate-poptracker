@@ -165,21 +165,15 @@
   {
     "name": "Fork Checkbox Visiblity",
     "type": "toggle",
-    "allow_disabled": true,
-    "static": true,
+    "initial_active_state": true,
     "img": "images/items/Forks.png",
-    "codes": "FORKS",
-    "inherit_codes": false,
-    //"disabled_img": "images/items/Forks_Disabled.png"
+    "codes": "FORKS"
   },
   {
     "name": "Timer Checkbox Visiblity",
     "type": "toggle",
-    "allow_disabled": true,
-    "static": true,
+    "initial_active_state": true,
     "img": "images/items/Timers.png",
-    "codes": "TIMERS",
-    "inherit_codes": false,
-    //"disabled_img": "images/items/Timers_Disabled.png"
+    "codes": "TIMERS"
   }
 ]
