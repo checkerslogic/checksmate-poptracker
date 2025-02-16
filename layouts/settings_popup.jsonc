@@ -1,0 +1,17 @@
+{
+    "settings_popup": {
+        "type": "array",
+        "background": "#6C7B71",
+        "orientation": "horizontal",
+        "margin": "5,5",
+        "content": [
+            {
+                "type": "itemgrid",
+                "item_margin": "5,0",
+                "item_size": "290, 502",
+                "h_alignment": "left",
+                "rows": [[ "TIMERS", "FORKS" ]]
+            }
+        ]
+    }
+}

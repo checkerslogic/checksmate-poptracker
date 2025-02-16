@@ -160,5 +160,26 @@
         "inherit_codes": false
       }
     ]
+  },
+  // tha visibility zone
+  {
+    "name": "Fork Checkbox Visiblity",
+    "type": "toggle",
+    "allow_disabled": true,
+    "static": true,
+    "img": "images/items/Forks.png",
+    "codes": "FORKS",
+    "inherit_codes": false,
+    //"disabled_img": "images/items/Forks_Disabled.png"
+  },
+  {
+    "name": "Timer Checkbox Visiblity",
+    "type": "toggle",
+    "allow_disabled": true,
+    "static": true,
+    "img": "images/items/Timers.png",
+    "codes": "TIMERS",
+    "inherit_codes": false,
+    //"disabled_img": "images/items/Timers_Disabled.png"
   }
 ]

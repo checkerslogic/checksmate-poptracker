@@ -285,18 +285,22 @@
         "item_count": 1}],
       "map_locations": [{"map": "map1", "x": 313, "y": 614}]},
     {"name": "Current Objective: Survive 3 Turns",
+      "visibility_rules": ["TIMERS"],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 377, "y": 614}]},
     {"name": "Current Objective: Survive 5 Turns",
       "access_rules": ["$needs_material|200|330,$needs_chessmen|2"],
+      "visibility_rules": ["TIMERS"],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 441, "y": 614}]},
     {"name": "Current Objective: Survive 10 Turns",
       "access_rules": ["$needs_material|2500|4500,$needs_chessmen|9"],
+      "visibility_rules": ["TIMERS"],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 505, "y": 614}]},
     {"name": "Current Objective: Survive 20 Turns",
       "access_rules": ["$needs_material|3800|5800,$needs_chessmen|15"],
+      "visibility_rules": ["TIMERS"],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 569, "y": 614}]},
     {"name": "Threaten Pawn",
@@ -322,6 +326,7 @@
       "access_rules": ["$needs_material|700|1100,$needs_chessmen|6,$needs_pin"],
       "visibility_rules": [
         // fork visibility rule
+        "FORKS"
       ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 796, "y": 389}]},
@@ -329,6 +334,7 @@
       "access_rules": ["$needs_material|3300|2700,$needs_chessmen|9,$needs_pin"],
       "visibility_rules": [
         // fork visibility rule
+        "FORKS"
       ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 795, "y": 513}]},
@@ -336,6 +342,7 @@
       "access_rules": ["$needs_material|3600|5200,$needs_chessmen|12,$needs_pin"],
       "visibility_rules": [
         // fork visibility rule
+        "FORKS"
       ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 826, "y": 133}]},
@@ -343,6 +350,7 @@
       "access_rules": ["$needs_material|3150|4550,$needs_chessmen|10,$needs_pin"],
       "visibility_rules": [
         // fork visibility rule
+        "FORKS"
       ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 913, "y": 389}]},
@@ -350,6 +358,7 @@
       "access_rules": ["$needs_material|3850|5850,$needs_chessmen|12,$needs_pin"],
       "visibility_rules": [
         // fork visibility rule
+        "FORKS"
       ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 912, "y": 513}]},
@@ -357,6 +366,7 @@
       "access_rules": ["$needs_material|4020|6020,$needs_chessmen|14,$needs_pin"],
       "visibility_rules": [
         // fork visibility rule
+        "FORKS"
       ],
       "sections": [{"item_count": 1}],
       "map_locations": [{"map": "map1", "x": 826, "y": 262}]},
