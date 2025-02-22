@@ -4,11 +4,14 @@
 
 -- Constants for difficulty modifiers
 DIFFICULTY_FAIRY_CHESS_ARMY = 1.05
-DIFFICULTY_FAIRY_CHESS_PAWNS = 1.05
-DIFFICULTY_FAIRY_CHESS_PAWNS_MIXED = 1.05
+DIFFICULTY_FAIRY_CHESS_PAWNS = 1.06
+DIFFICULTY_FAIRY_CHESS_PAWNS_MIXED = 1.16 --adjusting this value for NEW LOGIC
+DIFFICULTY_FAIRY_CHESS_PAWNS_DOUBLE = 1.12 --adjusting this value for NEW LOGIC
+DIFFICULTY_FAIRY_CHESS_PAWNS_UNUSUAL = 1.06 --adjusting this value for NEW LOGIC
 DIFFICULTY_DAILY = 1.1
 DIFFICULTY_BULLET = 1.2
 DIFFICULTY_RELAXED = 1.35
+SPHERE_ZERO_THRESHOLD = 99
 
 -- Material values for each item type
 MATERIAL_VALUES = {
@@ -125,6 +128,21 @@ function get_difficulty_modifier()
                     DIFFICULTY_FAIRY_CHESS_PAWNS_MIXED, difficulty))
             end
         end
+        if FAIRY_CHESS_PAWNS == "any_pawn" or FAIRY_CHESS_PAWNS == "any_fairy" or FAIRY_CHESS_PAWNS == "any_classical" then
+            difficulty = difficulty * DIFFICULTY_FAIRY_CHESS_PAWNS_DOUBLE
+            if ENABLE_DEBUG_LOG then
+                print(string.format("  Applying any chess pawns mixed modifier: %.2f -> %.2f", 
+                    DIFFICULTY_FAIRY_CHESS_PAWNS_DOUBLE, difficulty)) 
+            end
+        end
+        if FAIRY_CHESS_PAWNS == "berolina" or FAIRY_CHESS_PAWNS == "checkers" then
+            difficulty = difficulty * DIFFICULTY_FAIRY_CHESS_PAWNS_UNUSUAL
+            if ENABLE_DEBUG_LOG then
+                print(string.format("  Applying unusual chess pawns mixed modifier: %.2f -> %.2f", 
+                DIFFICULTY_FAIRY_CHESS_PAWNS_UNUSUAL, difficulty)) 
+            end
+        end
+
     end
     
     -- Fairy pieces modifier
@@ -159,6 +177,20 @@ function get_difficulty_modifier()
     return difficulty
 end
 
+function get_relaxation()
+    local angy = 0 --no angy if game easy
+    if DIFFICULTY_SETTING == "bullet" then
+        angy = angy + 120 -- bullet make angy
+    end
+    if DIFFICULTY_SETTING == "relaxed" then
+        angy = angy + 240 -- relax make very angy!?
+    end
+    if FAIRY_CHESS_PAWNS ~= "vanilla" then
+        angy = angy +120 -- alternate pawns? you better believe make angy
+    end
+    return angy
+end
+
 -- Helper function to check material requirements
 function needs_material(material_cost, grand_cost)
     -- Get current material from tracker
@@ -172,15 +204,22 @@ function needs_material(material_cost, grand_cost)
     
     -- Calculate difficulty modifier
     local difficulty = get_difficulty_modifier()
-    
+
+    -- Calculate relaxation offset
+    local relaxation = get_relaxation()
+
     -- Calculate target based on mode
     local target
     if GAME_MODE == "super" or material_cost == -1 then
-        target = grand_cost * difficulty
+        target = grand_cost * difficulty + relaxation
     elseif GAME_MODE == "both" then
-        target = math.min(material_cost, grand_cost) * difficulty
+        target = math.min(material_cost, grand_cost) * difficulty + relaxation
     else -- single mode
-        target = material_cost * difficulty
+        if tonumber(material_cost) <= SPHERE_ZERO_THRESHOLD then
+            target = material_cost * difficulty
+        else
+            target = material_cost * difficulty + relaxation
+        end
     end
     
     if ENABLE_DEBUG_LOG then
