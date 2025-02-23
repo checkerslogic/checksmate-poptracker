@@ -13,13 +13,14 @@ DIFFICULTY_BULLET = 1.2
 DIFFICULTY_RELAXED = 1.35
 SPHERE_ZERO_THRESHOLD = 99
 
---[[
-isMinor = false
-isMajor = false
-isQueen = false
-isCastle = false
-isChessman = false 
-]]
+isPawn = 0
+isMinor = 0
+isMajor = 0
+isQueen = 0
+isCastle = 0
+isChessman = 0
+isBig = 0
+
 
 -- Material values for each item type
 MATERIAL_VALUES = {
@@ -85,7 +86,8 @@ end
 
 -- Helper function to calculate current chessmen count
 function get_current_chessmen()
-    local total = 0
+    local total = Tracker:ProviderCountForCode("Progressive Pawn")
+    total = 0
     
     -- Add base chessmen (pawns, minors, majors, consuls)
     total = total + (LOCAL_ITEMS["Progressive Pawn"] or 0) + (GLOBAL_ITEMS["Progressive Pawn"] or 0)
@@ -268,7 +270,7 @@ end
 
 -- Helper function to check if super-size mode is available
 function has_super_size()
-    return ((LOCAL_ITEMS["Super-Size Me"] or 0) + (GLOBAL_ITEMS["Super-Size Me"] or 0) > 0)
+    return ((LOCAL_ITEMS["Super-Size Me"] or 0) or (GLOBAL_ITEMS["Super-Size Me"] or 0) or 0) > 0
 end
 
 function needs_castle()
@@ -324,3 +326,21 @@ function can_capture_everything()
         return needs_material(-1, 6020) and needs_chessmen(18) and has_super_size()
     end
 end
+
+function pawnChanged()
+    if ENABLE_DEBUG_LOG then
+        print("doing the think")
+    end
+    isPawn = Tracker:ProviderCountForCode("Progressive Pawn")
+    isMinor = Tracker:ProviderCountForCode("Progressive Minor Piece")
+    isMajor = Tracker:ProviderCountForCode("Progressive Major Piece")
+    isQueen = Tracker:ProviderCountForCode("Progressive Major To Queen")
+    isPocket = math.ceil(Tracker:ProviderCountForCode("Progressive Pocket") / Tracker:ProviderCountForCode("pocket_limit_by_pocket"))
+    isCastle = isMajor - isQueen
+    isChessman = isPawn + isMinor + isMajor
+    print("pawn: "..tostring(isPawn)..", minor: "..tostring(isMinor)..", major: "..tostring(isMajor)..
+    ", queen: "..tostring(isQueen)..", minor: "..tostring(isMinor)..", pocket: "..tostring(isPocket)..
+    ", castle: "..tostring(isCastle)..", chessman: "..tostring(isChessman))
+end
+
+ScriptHost.AddWatchForCode("pawnChangedLogic", "*", pawnChanged)
