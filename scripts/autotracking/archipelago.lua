@@ -120,10 +120,25 @@ function apply_slot_data(slot_data)
 				FAIRY_CHESS_PAWNS = "vanilla"
 				FAIRY_CHESS_PAWNS_MIXED = false
 			elseif slot_data["fairy_chess_pawns"] == 1 then
-				FAIRY_CHESS_PAWNS = "fairy"
-				FAIRY_CHESS_PAWNS_MIXED = false
-			elseif slot_data["fairy_chess_pawns"] == 2 then
 				FAIRY_CHESS_PAWNS = "mixed"
+				FAIRY_CHESS_PAWNS_MIXED = true
+			elseif slot_data["fairy_chess_pawns"] == 2 then
+				FAIRY_CHESS_PAWNS = "berolina"
+				FAIRY_CHESS_PAWNS_MIXED = false
+			elseif slot_data["fairy_chess_pawns"] == 3 then
+				FAIRY_CHESS_PAWNS = "checkers"
+				FAIRY_CHESS_PAWNS_MIXED = false
+			elseif slot_data["fairy_chess_pawns"] == 4 then
+				FAIRY_CHESS_PAWNS = "reserved"
+				FAIRY_CHESS_PAWNS_MIXED = false
+			elseif slot_data["fairy_chess_pawns"] == 5 then
+				FAIRY_CHESS_PAWNS = "any_pawn"
+				FAIRY_CHESS_PAWNS_MIXED = true
+			elseif slot_data["fairy_chess_pawns"] == 6 then
+				FAIRY_CHESS_PAWNS = "any_fairy"
+				FAIRY_CHESS_PAWNS_MIXED = true
+			elseif slot_data["fairy_chess_pawns"] == 7 then
+				FAIRY_CHESS_PAWNS = "any_classical"
 				FAIRY_CHESS_PAWNS_MIXED = true
 			end
 		end
@@ -263,7 +278,7 @@ function onItem(index, item_id, item_name, player_number)
 	end
 	
 	-- Force location accessibility recalculation
-	if ENABLE_DEBUG_LOG then
+	if ENABLE_DEBUG_LOG_VERBOSE then
 		print("Forcing location accessibility recalculation after item update")
 	end
 	
