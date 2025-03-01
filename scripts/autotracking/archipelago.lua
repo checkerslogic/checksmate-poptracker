@@ -11,11 +11,17 @@ CUR_INDEX = -1
 LOCAL_ITEMS = {}
 GLOBAL_ITEMS = {}
 
+
 GAME_MODE = "ordered_progressive" -- default to ordered progressive mode
 DIFFICULTY_SETTING = "daily" -- default to normal
-FAIRY_CHESS_ARMY = false
+TACTICS = "turns"
+PIECE_LOCATIONS = "chaos"
+PIECE_TYPES = "stable"
+
+FAIRY_CHESS_PIECES = false
 FAIRY_CHESS_PAWNS = "vanilla"
 FAIRY_CHESS_PAWNS_MIXED = false
+FAIRY_PIECE_CONFIGURE = false
 FAIRY_CHESS_PIECES = 1 -- default to FIDE pieces (1 piece type)
 
 -- resets an item to its initial state
@@ -100,7 +106,7 @@ function apply_slot_data(slot_data)
 		-- Difficulty setting
 		if slot_data["difficulty"] then
 			if slot_data["difficulty"] == 0 then
-				DIFFICULTY_SETTING = "normal"
+				DIFFICULTY_SETTING = "grandmaster"
 			elseif slot_data["difficulty"] == 1 then
 				DIFFICULTY_SETTING = "daily"
 			elseif slot_data["difficulty"] == 2 then
@@ -109,12 +115,44 @@ function apply_slot_data(slot_data)
 				DIFFICULTY_SETTING = "relaxed"
 			end
 		end
-		
-		-- Fairy chess settings
-		if slot_data["fairy_chess_army"] ~= nil then
-			FAIRY_CHESS_ARMY = slot_data["fairy_chess_army"] == 1
+
+		if slot_data["enable_tactics"] then
+			if slot_data["enable_tactics"] == 0 then
+				TACTICS = "all"
+			elseif slot_data["enable_tactics"] == 1 then
+				TACTICS = "turns"
+			elseif slot_data["enable_tactics"] == 2 then
+				TACTICS = "none"
+			end
 		end
-		
+
+		if slot_data["piece_locations"] ~= nil then
+			if slot_data["piece_locations"] == 0 then
+				PIECE_LOCATIONS = "chaos"
+			elseif slot_data["piece_locations"] == 1 then
+				PIECE_LOCATIONS = "stable"
+			end
+		end
+
+		-- Fairy chess settings
+		-- if slot_data["fairy_chess_pieces"] ~= nil then
+		-- 	if slot_data["fairy_chess_pieces"] == 0 then
+		-- 		FAIRY_CHESS_PIECES = 1
+		-- 	elseif slot_data["fairy_chess_pieces"] == 1 then
+		-- 		FAIRY_CHESS_PIECES = 4
+		-- 	elseif slot_data["fairy_chess_pieces"] == 2 then
+		-- 		FAIRY_CHESS_PIECES = 6
+		-- 	else
+		-- 		local piece_configure_count = 0
+		-- 		for _ in ipairs(slot_data["fairy_chess_pieces_configure"]) do piece_configure_count = piece_configure_count + 1 end
+		-- 		FAIRY_CHESS_PIECES = piece_configure_count
+		-- 	end
+		-- end
+
+		-- if slot_data["fairy_chess_pieces_configure"] ~= nil then
+		-- 	FAIRY_PIECE_CONFIGURE = slot_data["fairy_chess_pieces_configure"]
+		-- end
+
 		if slot_data["fairy_chess_pawns"] ~= nil then
 			if slot_data["fairy_chess_pawns"] == 0 then
 				FAIRY_CHESS_PAWNS = "vanilla"
@@ -144,26 +182,26 @@ function apply_slot_data(slot_data)
 		end
 		
 		if slot_data["fairy_chess_pieces"] ~= nil then
-			if slot_data["fairy_chess_pieces"] == 0 then
+			if slot_data["fairy_chess_pieces"] == 4 then
 				-- Check configure array if available
 				if slot_data["fairy_chess_pieces_configure"] then
 					FAIRY_CHESS_PIECES = #slot_data["fairy_chess_pieces_configure"]
 				else
 					FAIRY_CHESS_PIECES = 1 -- Default to FIDE
 				end
-			elseif slot_data["fairy_chess_pieces"] == 1 then
+			elseif slot_data["fairy_chess_pieces"] == 0 then
 				FAIRY_CHESS_PIECES = 1 -- FIDE
-			elseif slot_data["fairy_chess_pieces"] == 2 then
+			elseif slot_data["fairy_chess_pieces"] == 1 then
 				FAIRY_CHESS_PIECES = 4 -- Betza
-			elseif slot_data["fairy_chess_pieces"] == 3 then
+			elseif slot_data["fairy_chess_pieces"] == 2 then
 				FAIRY_CHESS_PIECES = 6 -- Full
 			end
 		end
 		
 		if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
 			print(string.format("Game settings - Mode: %s, Difficulty: %s", GAME_MODE, DIFFICULTY_SETTING))
-			print(string.format("Fairy chess - Army: %s, Pawns: %s (Mixed: %s), Pieces: %d", 
-				FAIRY_CHESS_ARMY, FAIRY_CHESS_PAWNS, FAIRY_CHESS_PAWNS_MIXED, FAIRY_CHESS_PIECES))
+			print(string.format("Fairy chess - Army: , Pawns: %s (Mixed: %s), Pieces: %d", 
+				FAIRY_CHESS_PAWNS, FAIRY_CHESS_PAWNS_MIXED, FAIRY_CHESS_PIECES))
 		end
 	end
 end

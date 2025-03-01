@@ -3,7 +3,7 @@
 -- to see how this function gets called, check: locations/locations.json
 
 -- Constants for difficulty modifiers
-DIFFICULTY_FAIRY_CHESS_ARMY = 1.05
+DIFFICULTY_CHAOS_ARMY = 1.05
 DIFFICULTY_FAIRY_CHESS_PAWNS = 1.06
 DIFFICULTY_FAIRY_CHESS_PAWNS_MIXED = 1.16 --adjusting this value for NEW LOGIC
 DIFFICULTY_FAIRY_CHESS_PAWNS_DOUBLE = 1.12 --adjusting this value for NEW LOGIC
@@ -59,27 +59,6 @@ function get_current_material()
         
         total = total + (count * value)
     end
-    if ENABLE_DEBUG_LOG_MATERIAL then
-        print(string.format("Current material value: %d", total)) 
-        if ENABLE_DEBUG_LOG_VERBOSE then
-            print(string.format("Current material value: %d", total))
-            -- Debug each item's contribution
-            for item, value in pairs(MATERIAL_VALUES) do
-                local count = 0
-                if LOCAL_ITEMS[item] then
-                    count = count + LOCAL_ITEMS[item]
-                end
-                if GLOBAL_ITEMS[item] then
-                    count = count + GLOBAL_ITEMS[item]
-                end
-                if item == "Progressive Major To Queen" then
-                    local major_pieces = (LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)
-                    count = math.min(count, major_pieces)
-                end
-                print(string.format("  %s: count=%d, value=%d, total=%d", item, count, value, count * value))
-            end
-        end
-    end
     
     return total
 end
@@ -106,81 +85,50 @@ function get_current_chessmen()
         end
     end
     
-    if ENABLE_DEBUG_LOG then
-        print(string.format("Current chessmen count: %d", total))
-    end
-    
     return total
 end
 
+
+-- DIFFICULTY_CHAOS_ARMY = 1.05
+-- DIFFICULTY_FAIRY_CHESS_PAWNS = 1.06
+-- DIFFICULTY_FAIRY_CHESS_PAWNS_MIXED = 1.16 --adjusting this value for NEW LOGIC
+-- DIFFICULTY_FAIRY_CHESS_PAWNS_DOUBLE = 1.12 --adjusting this value for NEW LOGIC
+-- DIFFICULTY_FAIRY_CHESS_PAWNS_UNUSUAL = 1.06 --adjusting this value for NEW LOGIC
+-- DIFFICULTY_DAILY = 1.1
+-- DIFFICULTY_BULLET = 1.2
+-- DIFFICULTY_RELAXED = 1.35
 -- Helper function to calculate difficulty modifier
 function get_difficulty_modifier()
     local difficulty = 1.0
-    if ENABLE_DEBUG_LOG_VERBOSE then
-        print(string.format("  Applying fairy chess army modifier: %.2f -> %.2f", DIFFICULTY_FAIRY_CHESS_ARMY, difficulty))
-    end
     -- Fairy chess army modifier
-    if FAIRY_CHESS_ARMY then
-        difficulty = difficulty * DIFFICULTY_FAIRY_CHESS_ARMY
-    end
-    
-    if ENABLE_DEBUG_LOG_VERBOSE then
-        print(string.format("  FAIRY_CHESS_PAWNS: %s", FAIRY_CHESS_PAWNS))
-        print(string.format("  FAIRY_CHESS_PIECES: %s", FAIRY_CHESS_PIECES))
-        print(string.format("  FAIRY_CHESS_ARMY: %s", FAIRY_CHESS_ARMY))
-        print(string.format("  DIFFICULTY_SETTING: %s", DIFFICULTY_SETTING))
+    if PIECE_LOCATIONS == "stable" then
+        difficulty = difficulty * DIFFICULTY_CHAOS_ARMY
     end
     -- Fairy chess pawns modifier
     if FAIRY_CHESS_PAWNS ~= "vanilla" then
         difficulty = difficulty * DIFFICULTY_FAIRY_CHESS_PAWNS
-        if ENABLE_DEBUG_LOG_VERBOSE then
-            print(string.format("  Applying fairy chess pawns modifier: %.2f -> %.2f", DIFFICULTY_FAIRY_CHESS_PAWNS, difficulty))
-        end
         if FAIRY_CHESS_PAWNS_MIXED then
             difficulty = difficulty * DIFFICULTY_FAIRY_CHESS_PAWNS_MIXED
-            if ENABLE_DEBUG_LOG_VERBOSE then
-                print(string.format("  Applying fairy chess pawns mixed modifier: %.2f -> %.2f", DIFFICULTY_FAIRY_CHESS_PAWNS_MIXED, difficulty))
-            end
         end
         if FAIRY_CHESS_PAWNS == "any_pawn" or FAIRY_CHESS_PAWNS == "any_fairy" or FAIRY_CHESS_PAWNS == "any_classical" then
             difficulty = difficulty * DIFFICULTY_FAIRY_CHESS_PAWNS_DOUBLE
-            if ENABLE_DEBUG_LOG_VERBOSE then
-                print(string.format("  Applying any chess pawns mixed modifier: %.2f -> %.2f", DIFFICULTY_FAIRY_CHESS_PAWNS_DOUBLE, difficulty)) 
-            end
         end
         if FAIRY_CHESS_PAWNS == "berolina" or FAIRY_CHESS_PAWNS == "checkers" then
             difficulty = difficulty * DIFFICULTY_FAIRY_CHESS_PAWNS_UNUSUAL
-            if ENABLE_DEBUG_LOG_VERBOSE then
-                print(string.format("  Applying unusual chess pawns mixed modifier: %.2f -> %.2f", DIFFICULTY_FAIRY_CHESS_PAWNS_UNUSUAL, difficulty)) 
-            end
         end
-
     end
     
     -- Fairy pieces modifier
     local pieces_modifier = 0.99 + (0.01 * FAIRY_CHESS_PIECES)
     difficulty = difficulty * pieces_modifier
---[[     if ENABLE_DEBUG_LOG then
-        print(string.format("  Applying fairy pieces modifier (count=%d): %.2f -> %.2f", 
-            FAIRY_CHESS_PIECES, pieces_modifier, difficulty))
-    end ]]
     
     -- Game difficulty modifiers
     if DIFFICULTY_SETTING == "daily" then
         difficulty = difficulty * DIFFICULTY_DAILY
-        if ENABLE_DEBUG_LOG_VERBOSE then
-            print(string.format("  Applying daily difficulty modifier: %.2f -> %.2f", DIFFICULTY_DAILY, difficulty))
-        end
     elseif DIFFICULTY_SETTING == "bullet" then
         difficulty = difficulty * DIFFICULTY_BULLET
-        if ENABLE_DEBUG_LOG_VERBOSE then
-            print(string.format("  Applying bullet difficulty modifier: %.2f -> %.2f", DIFFICULTY_BULLET, difficulty))
-        end
     elseif DIFFICULTY_SETTING == "relaxed" then
         difficulty = difficulty * DIFFICULTY_RELAXED
-        if ENABLE_DEBUG_LOG_VERBOSE then
-            print(string.format("  Applying relaxed difficulty modifier: %.2f -> %.2f", DIFFICULTY_RELAXED, difficulty))
-        end
     end
     
     return difficulty
@@ -197,18 +145,21 @@ function get_relaxation()
     if FAIRY_CHESS_PAWNS ~= "vanilla" then
         angy = angy +120 -- alternate pawns? you better believe make angy
     end
+    if ENABLE_DEBUG_LOG then
+        print("get relaxation ran. angy is: "..tostring(angy))
+    end
     return angy
 end
 
 -- Helper function to check material requirements
-function needs_material(material_cost, grand_cost)
+function needs_material(material_cost, grand_cost, name)
     -- Get current material from tracker
     local current_material = get_current_material()
     
     -- Handle -1 material cost cases
     if GAME_MODE == "single" and material_cost == -1 then
         -- Location requires super-size mode
-        return 0
+        return false
     end
     
     -- Calculate difficulty modifier
@@ -219,10 +170,16 @@ function needs_material(material_cost, grand_cost)
 
     -- Calculate target based on mode
     local target
-    if GAME_MODE == "super" or material_cost == -1 then
+    if GAME_MODE == "super" then
+        target = grand_cost * difficulty + relaxation
+    elseif tonumber(material_cost) == -1 then
         target = grand_cost * difficulty + relaxation
     elseif GAME_MODE == "both" then
-        target = math.min(material_cost, grand_cost) * difficulty + relaxation
+        if tonumber(material_cost) <= SPHERE_ZERO_THRESHOLD then
+            target = material_cost * difficulty
+        else
+            target = material_cost * difficulty + relaxation
+        end
     else -- single mode
         if tonumber(material_cost) <= SPHERE_ZERO_THRESHOLD then
             target = material_cost * difficulty
@@ -230,17 +187,19 @@ function needs_material(material_cost, grand_cost)
             target = material_cost * difficulty + relaxation
         end
     end
-    
     if ENABLE_DEBUG_LOG then
-        print(string.format("Material check: current=%.0f, target=%.0f, mode=%s", current_material, target, GAME_MODE))
-        print(string.format("  Base cost: %d, Grand cost: %d", material_cost, grand_cost))
-        --print(string.format("  Final difficulty modifier: %.2f", difficulty))
+        if type(name) ~= "string" then
+            name = tostring(name)
+        end
+        print("needs_material for: ".. name)
+        print(string.format("  material/grand_cost: %.0f, %.0f; difficulty: %.2f; relaxation: %.0f; target: %.0f, material: %.0f", 
+                                material_cost, grand_cost, difficulty, relaxation, target, current_material))
+        print("  material state: "..tostring(current_material > target))
     end
-
-    if current_material < target then
-        return false
-    else
+    if current_material >= target then
         return true
+    else
+        return false
     end
 end
 
@@ -248,35 +207,46 @@ function needs_chessmen(count)
     if type(count) == "string" then
         count = tonumber(count)
     end
-    if not count then return 0 end
-    
     local chessmen_count = get_current_chessmen()
-    if ENABLE_DEBUG_LOG_VERBOSE then
-        print(string.format("Chessmen check: current=%d, required=%d", chessmen_count, count))
+    if ENABLE_DEBUG_LOG then
+        print("  but how about those chessmen?")
+        print(string.format("  needed_chessmen: %d; get_current_chessmen: %d; ", count, chessmen_count))
+        print("  chessmen state: "..tostring(chessmen_count >= count))
     end
-
-    if chessmen_count < count then
-        return false
-    else
+    if chessmen_count >= count then
         return true
+    else
+        return false
     end
 end
 
 function needs_pin()
     -- if minor or major
-    return (((LOCAL_ITEMS["Progressive Minor Piece"] or 0) + (GLOBAL_ITEMS["Progressive Minor Piece"] or 0)) > 0 or 
-            ((LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)) > 0)
+    local pin = (((LOCAL_ITEMS["Progressive Minor Piece"] or 0) + (GLOBAL_ITEMS["Progressive Minor Piece"] or 0)) > 0 or 
+    ((LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)) > 0)
+    if ENABLE_DEBUG_LOG then
+        print("hows the pin?: "..tostring(pin))
+    end
+    return pin
 end
 
 -- Helper function to check if super-size mode is available
 function has_super_size()
-    return ((LOCAL_ITEMS["Super-Size Me"] or 0) or (GLOBAL_ITEMS["Super-Size Me"] or 0) or 0) > 0
+    local big = ((LOCAL_ITEMS["Super-Size Me"] or 0) or (GLOBAL_ITEMS["Super-Size Me"] or 0) or 0) > 0
+    if ENABLE_DEBUG_LOG then
+        print("hows the super size?: "..tostring(big))
+    end
+    return big
 end
 
 function needs_castle()
-    return ((LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)) 
+    local twocastle = ((LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)) 
     >
     ((LOCAL_ITEMS["Progressive Major To Queen"] or 0) + (GLOBAL_ITEMS["Progressive Major To Queen"] or 0) + 1)
+    if ENABLE_DEBUG_LOG then
+        print("ah, but do you have two castles?: "..tostring(twocastle))
+    end
+    return twocastle
 end
 
 --[[ function is_tactic_available(tactic_type)
@@ -295,7 +265,7 @@ end
 end ]]
 
 function can_checkmate_minima()
-    return needs_material(4020, 4020)
+    return needs_material(4020, 4020, "checkmate_minima")
 end
 
 function can_checkmate_maxima()
@@ -303,33 +273,20 @@ function can_checkmate_maxima()
     if GAME_MODE == "single" then
         return false
     end
-    return needs_material(-1, 6020) and has_super_size()
+    return needs_material(-1, 6020, "checkmate_maxima") and has_super_size()
 end
 
 function can_capture_everything()
     if GAME_MODE == "single" then
-        return needs_material(4020, 4020) and needs_chessmen(14)
+        return needs_material(4020, 4020, "capture_everything") and needs_chessmen(14)
     else
-        if ENABLE_DEBUG_LOG then
-            print("")
-            print("WOW! can_capture_everything zone!")
-            print("")
-            print("Needed material is 6020")
-            print(string.format("Current material is: %d", get_current_material()))
-            print("Needs material is: ".. tostring(needs_material(-1, 6020)))
-            print(string.format("Current chessmen is: %d", get_current_chessmen()))
-            print("Needs chessmen is: ".. tostring(needs_chessmen(18)))
-            print("Super size?: ".. tostring(has_super_size()))
-            print("Capture everything? ".. tostring(needs_material(-1, 6020) and needs_chessmen(18) and has_super_size()))
-
-        end
-        return needs_material(-1, 6020) and needs_chessmen(18) and has_super_size()
+        return needs_material(-1, 6020, "capture_everything") and needs_chessmen(18) and has_super_size()
     end
 end
 
 function pawnChanged()
     if ENABLE_DEBUG_LOG then
-        print("doing the think")
+        print("pawnChanged updated!")
     end
     isPawn = Tracker:ProviderCountForCode("Progressive Pawn")
     isMinor = Tracker:ProviderCountForCode("Progressive Minor Piece")
@@ -338,9 +295,6 @@ function pawnChanged()
     isPocket = math.ceil(Tracker:ProviderCountForCode("Progressive Pocket") / Tracker:ProviderCountForCode("pocket_limit_by_pocket"))
     isCastle = isMajor - isQueen
     isChessman = isPawn + isMinor + isMajor
-    print("pawn: "..tostring(isPawn)..", minor: "..tostring(isMinor)..", major: "..tostring(isMajor)..
-    ", queen: "..tostring(isQueen)..", minor: "..tostring(isMinor)..", pocket: "..tostring(isPocket)..
-    ", castle: "..tostring(isCastle)..", chessman: "..tostring(isChessman))
 end
 
 ScriptHost.AddWatchForCode("pawnChangedLogic", "*", pawnChanged)
