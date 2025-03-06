@@ -1,8 +1,11 @@
 {
-    "type": "group",
-    "header": "Stuff",
+    "type": "container",
     "content": {
-        "type": "layout",
-        "key": "progressive_item_grid"
+        "type": "group",
+        "header": "Stuff",
+        "content": {
+            "type": "layout",
+            "key": "progressive_item_grid"
+        }
     }
 }
