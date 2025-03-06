@@ -119,8 +119,11 @@ function apply_slot_data(slot_data)
 		if slot_data["enable_tactics"] then
 			if slot_data["enable_tactics"] == 0 then
 				TACTICS = "all"
+				Tracker:FindObjectForCode("FORKS").Active()
+				Tracker:FindObjectForCode("TIMERS").Active()
 			elseif slot_data["enable_tactics"] == 1 then
 				TACTICS = "turns"
+				Tracker:FindObjectForCode("TIMERS").Active()
 			elseif slot_data["enable_tactics"] == 2 then
 				TACTICS = "none"
 			end

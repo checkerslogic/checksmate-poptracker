@@ -21,11 +21,12 @@
   {
     "name": "Progressive Engine ELO Lobotomy",
     "type": "consumable",
+    "max_quantity": 5,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "Chessbot40",
+        "img": "images/items/Chessbot40.png",
         "codes": "Progressive Engine ELO Lobotomy"
         //"inherit_codes": false
       }
@@ -34,6 +35,7 @@
   {
     "name": "Progressive Pawn",
     "type": "consumable",
+    "max_quantity": 60,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -47,6 +49,7 @@
   {
     "name": "Progressive Pawn Forwardness",
     "type": "consumable",
+    "max_quantity": 13,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -60,6 +63,7 @@
   {
     "name": "Progressive Minor Piece",
     "type": "consumable",
+    "max_quantity": 15,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -73,6 +77,7 @@
   {
     "name": "Progressive Major Piece",
     "type": "consumable",
+    "max_quantity": 11,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -86,6 +91,7 @@
   {
     "name": "Progressive Major To Queen",
     "type": "consumable",
+    "max_quantity": 9,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -99,6 +105,7 @@
   {
     "name": "Progressive Pocket",
     "type": "consumable",
+    "max_quantity": 12,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -112,6 +119,7 @@
   {
     "name": "Progressive Pocket Gems",
     "type": "consumable",
+    "max_quantity": 69420,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -125,6 +133,7 @@
   {
     "name": "Progressive Pocket Range",
     "type": "consumable",
+    "max_quantity": 6,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -138,6 +147,7 @@
   {
     "name": "Progressive King Promotion",
     "type": "consumable",
+    "max_quantity": 2,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
@@ -151,6 +161,7 @@
   {
     "name": "Progressive Consul",
     "type": "consumable",
+    "max_quantity": 2,
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [

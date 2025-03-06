@@ -145,7 +145,7 @@ function get_relaxation()
     if FAIRY_CHESS_PAWNS ~= "vanilla" then
         angy = angy +120 -- alternate pawns? you better believe make angy
     end
-    if ENABLE_DEBUG_LOG then
+    if ENABLE_LOGIC_DEBUG_LOG then
         print("get relaxation ran. angy is: "..tostring(angy))
     end
     return angy
@@ -187,7 +187,7 @@ function needs_material(material_cost, grand_cost, name)
             target = material_cost * difficulty + relaxation
         end
     end
-    if ENABLE_DEBUG_LOG then
+    if ENABLE_LOGIC_DEBUG_LOG then
         if type(name) ~= "string" then
             name = tostring(name)
         end
@@ -208,7 +208,7 @@ function needs_chessmen(count)
         count = tonumber(count)
     end
     local chessmen_count = get_current_chessmen()
-    if ENABLE_DEBUG_LOG then
+    if ENABLE_LOGIC_DEBUG_LOG then
         print("  but how about those chessmen?")
         print(string.format("  needed_chessmen: %d; get_current_chessmen: %d; ", count, chessmen_count))
         print("  chessmen state: "..tostring(chessmen_count >= count))
@@ -224,7 +224,7 @@ function needs_pin()
     -- if minor or major
     local pin = (((LOCAL_ITEMS["Progressive Minor Piece"] or 0) + (GLOBAL_ITEMS["Progressive Minor Piece"] or 0)) > 0 or 
     ((LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)) > 0)
-    if ENABLE_DEBUG_LOG then
+    if ENABLE_LOGIC_DEBUG_LOG then
         print("hows the pin?: "..tostring(pin))
     end
     return pin
@@ -233,7 +233,7 @@ end
 -- Helper function to check if super-size mode is available
 function has_super_size()
     local big = ((LOCAL_ITEMS["Super-Size Me"] or 0) or (GLOBAL_ITEMS["Super-Size Me"] or 0) or 0) > 0
-    if ENABLE_DEBUG_LOG then
+    if ENABLE_LOGIC_DEBUG_LOG then
         print("hows the super size?: "..tostring(big))
     end
     return big
@@ -243,7 +243,7 @@ function needs_castle()
     local twocastle = ((LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)) 
     >
     ((LOCAL_ITEMS["Progressive Major To Queen"] or 0) + (GLOBAL_ITEMS["Progressive Major To Queen"] or 0) + 1)
-    if ENABLE_DEBUG_LOG then
+    if ENABLE_LOGIC_DEBUG_LOG then
         print("ah, but do you have two castles?: "..tostring(twocastle))
     end
     return twocastle
@@ -291,8 +291,18 @@ function get(name)
     return (LOCAL_ITEMS[name] or 0) + (GLOBAL_ITEMS[name] or 0)
 end
 
+--[[ function do_settings(name)
+    if TACTICS == "all" then
+        return true
+    end
+    if TACTICS == name then
+        return true
+    end
+    return false
+end ]]
+
 function pawnChanged()
-    if ENABLE_DEBUG_LOG then
+    if ENABLE_LOGIC_DEBUG_LOG then
         print("pawnChanged updated!")
     end
     isPawn = Tracker:ProviderCountForCode("Progressive Pawn")
