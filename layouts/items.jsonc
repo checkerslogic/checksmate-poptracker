@@ -11,7 +11,7 @@
   },
   "alternative_item_grid": {
     "type": "array",
-    "orientation": "horizontoal",
+    "orientation": "horizontal",
     "content": [
       {"type": "container", "content": {"type": "item", "item": "Progressive Pawn"}}, 
       {"type": "container", "content": {"type": "text", "text": "$get|Progressive Pawn"}}
