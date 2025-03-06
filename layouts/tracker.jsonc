@@ -2,14 +2,48 @@
   //sets the trackers layout
   //more info: https://github.com/black-sliver/PopTracker/blob/master/doc/PACKS.md#layouts
   "tracker_default": {
-    "type": "container",
+    "type": "dock",
     "background": "#000000",
     "h_alignment": "center",
-    "content": {
-      "type": "map",
-      "max_height":  604, // maximum height in px
-      "max_width":   927, // maximum width in px
-      "maps": ["map1"]
-    }
+    "content": [
+      {
+        "type": "dock",
+        "header": "Items",
+        "dock": "left",
+        "content": [
+          {
+            "type": "dock",
+            "dock": "top",
+            "content":[
+            {
+              "type": "group",
+              "content": {
+                "type": "layout",
+                "key": "progressive_item_grid"
+              }
+            },
+            {
+              "type": "group",
+              "content": {
+                "type": "layout",
+                "key": "alternative_item_grid"
+              }
+            }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        //"dock": "top",
+        "content": [{
+          "type": "map",
+          "max_height":  604, // maximum height in px
+          "max_width":   927, // maximum width in px
+          "maps": ["map1"]
+        }
+      ]
+      }
+    ]
   }
 }

@@ -21,143 +21,143 @@
   {
     "name": "Progressive Engine ELO Lobotomy",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Engine ELO Lobotomy",
-        "inherit_codes": false
+        "codes": "Progressive Engine ELO Lobotomy"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Pawn",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Pawn",
-        "inherit_codes": false
+        "codes": "Progressive Pawn"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Pawn Forwardness",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Pawn Forwardness",
-        "inherit_codes": false
+        "codes": "Progressive Pawn Forwardness"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Minor Piece",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Minor Piece",
-        "inherit_codes": false
+        "codes": "Progressive Minor Piece"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Major Piece",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Major Piece",
-        "inherit_codes": false
+        "codes": "Progressive Major Piece"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Major To Queen",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Major To Queen",
-        "inherit_codes": false
+        "codes": "Progressive Major To Queen"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Pocket",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Pocket",
-        "inherit_codes": false
+        "codes": "Progressive Pocket"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Pocket Gems",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Pocket Gems",
-        "inherit_codes": false
+        "codes": "Progressive Pocket Gems"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Pocket Range",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Pocket Range",
-        "inherit_codes": false
+        "codes": "Progressive Pocket Range"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive King Promotion",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive King Promotion",
-        "inherit_codes": false
+        "codes": "Progressive King Promotion"
+        //"inherit_codes": false
       }
     ]
   },
   {
     "name": "Progressive Consul",
     "type": "progressive",
-    "allow_disabled": true,
-    "initial_stage_idx": 0,
+    //"allow_disabled": true,
+    //"initial_stage_idx": 0,
     "stages": [
       {
         "img": "images/items/blackhorseblack.png",
-        "codes": "Progressive Consul",
-        "inherit_codes": false
+        "codes": "Progressive Consul"
+        //"inherit_codes": false
       }
     ]
   },

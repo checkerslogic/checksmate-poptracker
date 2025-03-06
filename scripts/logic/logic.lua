@@ -284,6 +284,13 @@ function can_capture_everything()
     end
 end
 
+function get(name)
+    -- if type(name) ~= "string" then
+    --     name = tostring(name)
+    -- end
+    return (LOCAL_ITEMS[name] or 0) + (GLOBAL_ITEMS[name] or 0)
+end
+
 function pawnChanged()
     if ENABLE_DEBUG_LOG then
         print("pawnChanged updated!")
