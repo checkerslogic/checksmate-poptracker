@@ -2,8 +2,9 @@
   "progressive_item_grid": {
     "type": "itemgrid",
     "h_alignment": "center",
-    "margin": "1,2",
-    "rows": [["Play as White"], ["Progressive Pawn"], ["Progressive Minor Piece"], ["Progressive Major Piece"],
+    "margin": "1,1",
+    "item_size": "40,40",
+    "rows": [["Play as White"], ["Progressive Pawn"], ["Progressive Pawn Forwardness"], ["Progressive Minor Piece"], ["Progressive Major Piece"],
           ["Progressive Major To Queen"], ["Progressive Pocket"], ["Progressive Pocket Range"], ["Progressive Pocket Gems"],
           ["Progressive King Promotion"], ["Progressive Consul"], ["Super-Size Me"], ["Victory"]   
     ]

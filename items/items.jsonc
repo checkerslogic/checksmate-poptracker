@@ -3,29 +3,29 @@
   {
     "name": "Play as White",
     "type": "toggle",
-    "img": "images/items/blackqueenwhite.png",
+    "img": "images/items/PlayAsWhite.png",
     "codes": "Play as White"
   },
   {
     "name": "Victory",
     "type": "toggle",
-    "img": "images/items/blackqueenwhite.png",
+    "img": "images/items/KingWumbo.png",
     "codes": "Victory"
   },
   {
     "name": "Super-Size Me",
     "type": "toggle",
-    "img": "images/items/blackqueenwhite.png",
+    "img": "images/items/KingDead.png",
     "codes": "Super-Size Me"
   },
   {
     "name": "Progressive Engine ELO Lobotomy",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "Chessbot40",
         "codes": "Progressive Engine ELO Lobotomy"
         //"inherit_codes": false
       }
@@ -33,12 +33,12 @@
   },
   {
     "name": "Progressive Pawn",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/Pawn.png",
         "codes": "Progressive Pawn"
         //"inherit_codes": false
       }
@@ -46,12 +46,12 @@
   },
   {
     "name": "Progressive Pawn Forwardness",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/PawnF.png",
         "codes": "Progressive Pawn Forwardness"
         //"inherit_codes": false
       }
@@ -59,12 +59,12 @@
   },
   {
     "name": "Progressive Minor Piece",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/Honse.png",
         "codes": "Progressive Minor Piece"
         //"inherit_codes": false
       }
@@ -72,12 +72,12 @@
   },
   {
     "name": "Progressive Major Piece",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/Major.png",
         "codes": "Progressive Major Piece"
         //"inherit_codes": false
       }
@@ -85,12 +85,12 @@
   },
   {
     "name": "Progressive Major To Queen",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/Queen.png",
         "codes": "Progressive Major To Queen"
         //"inherit_codes": false
       }
@@ -98,12 +98,12 @@
   },
   {
     "name": "Progressive Pocket",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/Pocket.png",
         "codes": "Progressive Pocket"
         //"inherit_codes": false
       }
@@ -111,12 +111,12 @@
   },
   {
     "name": "Progressive Pocket Gems",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/Gems.png",
         "codes": "Progressive Pocket Gems"
         //"inherit_codes": false
       }
@@ -124,12 +124,12 @@
   },
   {
     "name": "Progressive Pocket Range",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/PocketF.png",
         "codes": "Progressive Pocket Range"
         //"inherit_codes": false
       }
@@ -137,12 +137,12 @@
   },
   {
     "name": "Progressive King Promotion",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/KingUpgrade.png",
         "codes": "Progressive King Promotion"
         //"inherit_codes": false
       }
@@ -150,12 +150,12 @@
   },
   {
     "name": "Progressive Consul",
-    "type": "progressive",
+    "type": "consumable",
     //"allow_disabled": true,
     //"initial_stage_idx": 0,
     "stages": [
       {
-        "img": "images/items/blackhorseblack.png",
+        "img": "images/items/KingMore.png",
         "codes": "Progressive Consul"
         //"inherit_codes": false
       }

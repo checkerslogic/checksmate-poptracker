@@ -8,7 +8,6 @@
     "content": [
       {
         "type": "dock",
-        "header": "Items",
         "dock": "left",
         "content": [
           {
@@ -17,18 +16,19 @@
             "content":[
             {
               "type": "group",
+              "header": "Stuff",
               "content": {
                 "type": "layout",
                 "key": "progressive_item_grid"
               }
-            },
-            {
-              "type": "group",
-              "content": {
-                "type": "layout",
-                "key": "alternative_item_grid"
-              }
-            }
+            }//,
+            // {
+            //   "type": "group",
+            //   "content": {
+            //     "type": "layout",
+            //     "key": "alternative_item_grid"
+            //   }
+            // }
             ]
           }
         ]
