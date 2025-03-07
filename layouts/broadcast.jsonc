@@ -1,5 +1,5 @@
 {
-    "the_object_that_i_use_to_configure_the_broadcast_window":{
+    "tracker_broadcast":{
         "type": "group",
         "header": "Stuff",
         "content": {
