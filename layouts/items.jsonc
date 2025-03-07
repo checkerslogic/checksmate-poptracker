@@ -4,9 +4,12 @@
     "h_alignment": "center",
     "margin": "0,0",
     "item_size": "40,40",
-    "rows": [["Play as White"], ["Progressive Pawn", "Progressive Pawn Forwardness"], ["Progressive Minor Piece", "Progressive Major Piece",
-          "Progressive Major To Queen"], ["Progressive Pocket", "Progressive Pocket Range", "Progressive Pocket Gems"],
-          ["Progressive King Promotion", "Progressive Consul"], ["Progressive Engine ELO Lobotomy"], ["Super-Size Me", "Victory"]   
+    "rows": [["Play as White"], 
+          ["Progressive Pawn", "Progressive Pawn Forwardness"], 
+          ["Progressive Minor Piece", "Progressive Major Piece", "Progressive Jack"], 
+          ["Progressive Pocket", "Progressive Pocket Range", "Progressive Pocket Gems"],
+          ["Progressive Major To Queen", "Progressive King Promotion", "Progressive Consul"], 
+          ["Progressive Engine ELO Lobotomy"], ["Super-Size Me", "Victory"]   
     ]
   },
   "alternative_item_grid": {

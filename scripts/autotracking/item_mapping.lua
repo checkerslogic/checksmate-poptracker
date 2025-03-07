@@ -16,5 +16,6 @@ ITEM_MAPPING = {
 	[BASE_ITEM_ID + 23] = { { "Progressive Pocket Gems", "consumable" } },
 	[BASE_ITEM_ID + 24] = { { "Progressive Pocket Range", "consumable" } },
 	[BASE_ITEM_ID + 25] = { { "Progressive King Promotion", "consumable" } },
-	[BASE_ITEM_ID + 26] = { { "Progressive Consul", "consumable" } }
+	[BASE_ITEM_ID + 26] = { { "Progressive Consul", "consumable" } },
+	[BASE_ITEM_ID + 7] = { { "Progressive Jack", "consumable" } }
 }

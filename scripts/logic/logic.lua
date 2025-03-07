@@ -28,6 +28,7 @@ MATERIAL_VALUES = {
     ["Progressive Pawn"] = 100,
     ["Progressive Minor Piece"] = 300,
     ["Progressive Major Piece"] = 485,
+    ["Progressive Jack"] = 700,
     ["Progressive Major To Queen"] = 415,  -- Additional value when upgrading major to queen
     ["Progressive King Promotion"] = 350,
     ["Progressive Consul"] = 325,
@@ -73,6 +74,7 @@ function get_current_chessmen()
     total = total + (LOCAL_ITEMS["Progressive Minor Piece"] or 0) + (GLOBAL_ITEMS["Progressive Minor Piece"] or 0)
     total = total + (LOCAL_ITEMS["Progressive Major Piece"] or 0) + (GLOBAL_ITEMS["Progressive Major Piece"] or 0)
     total = total + (LOCAL_ITEMS["Progressive Consul"] or 0) + (GLOBAL_ITEMS["Progressive Consul"] or 0)
+    total = total + ((LOCAL_ITEMS["Progressive Jack"] or 0) + (GLOBAL_ITEMS["Progressive Jack"] or 0))
     
     -- Calculate pocket contribution
     local pocket_count = ((LOCAL_ITEMS["Progressive Pocket"] or 0) + (GLOBAL_ITEMS["Progressive Pocket"] or 0))

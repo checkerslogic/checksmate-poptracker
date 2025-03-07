@@ -130,6 +130,13 @@
     "codes": "Progressive Consul"
     //"inherit_codes": false
   },
+  {
+    "name": "Progressive Jack",
+    "type":"consumable",
+    "max_quantity": 9,
+    "img": "images/items/Jack.png",
+    "codes": "Progressive Jack"
+  },
   // tha visibility zone
   {
     "name": "Fork Checkbox Visiblity",
