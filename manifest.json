@@ -1,7 +1,7 @@
 {
   "name": "ChecksMate ChecksTrack",
   "game_name": "Checksmate",
-  "package_version": "0.0.5",
+  "package_version": "0.1.0",
   "package_uid": "checksmate_tracker",
   "platform": "Personal Computer",
   "author": "checkerslogic, chesslogic",
