@@ -1,11 +1,11 @@
 {
   "name": "ChecksMate ChecksTrack",
   "game_name": "Checksmate",
-  "package_version": "0.0.5",
+  "package_version": "0.3.0",
   "package_uid": "checksmate_tracker",
   "platform": "Personal Computer",
   "author": "checkerslogic, chesslogic",
-  "min_poptracker_version": "0.25.9",
+  "min_poptracker_version": "0.30.3",
   "target_poptracker_version": "0.30.3",
   "variants": {
     "standard": {
